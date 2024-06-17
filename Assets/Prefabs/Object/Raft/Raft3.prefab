@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 0.1, z: 1}
+  m_LocalScale: {x: 4, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5926594269442338719}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: -2157883468925370540}
   - component: {fileID: -9002775525354811393}
   m_Layer: 7
-  m_Name: Raft
+  m_Name: Raft3
   m_TagString: Raft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,4 +172,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0bf7eaa7b79ac441abdbaad98bbdb40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 4

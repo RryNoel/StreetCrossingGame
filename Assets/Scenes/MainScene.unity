@@ -7452,12 +7452,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: Car
+  - tag: Taxi
     prefab: {fileID: 775787864640794108, guid: e556b1fd85efa8343afc543957605d60, type: 3}
-    size: 50
+    size: 30
+  - tag: Police
+    prefab: {fileID: 2911010676683051932, guid: 033310d98683a124daa2d8e05c62f7fc, type: 3}
+    size: 30
+  - tag: Van
+    prefab: {fileID: 4757852586723643390, guid: 1ca77a278c1d7ee4bb7f94def1992579, type: 3}
+    size: 30
+  - tag: Suv
+    prefab: {fileID: 2058149718727480233, guid: 8778c26a7f8f00a4dbb9ee13cfe6c401, type: 3}
+    size: 30
   - tag: Raft
     prefab: {fileID: 7629281076240890215, guid: 690dbd11e6f82f14a862718ae66c0103, type: 3}
-    size: 50
+    size: 30
+  - tag: Raft2
+    prefab: {fileID: 7629281076240890215, guid: 8043e2133c740f841a8454320d7e4665, type: 3}
+    size: 30
+  - tag: Raft3
+    prefab: {fileID: 7629281076240890215, guid: 09946c07b6fba734db5401ab58b39911, type: 3}
+    size: 30
 --- !u!4 &599167693
 Transform:
   m_ObjectHideFlags: 0
@@ -7629,7 +7644,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -7711,8 +7726,8 @@ MonoBehaviour:
   backOffSetLineCount: 20
   minPosZ: -20
   maxPosZ: 20
-  frontOffSetPosZ: 10
-  backOffSetPosZ: 10
+  frontOffSetPosZ: 50
+  backOffSetPosZ: 20
 --- !u!4 &1123149297
 Transform:
   m_ObjectHideFlags: 0

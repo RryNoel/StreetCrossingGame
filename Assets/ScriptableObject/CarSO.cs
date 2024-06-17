@@ -6,6 +6,4 @@ using UnityEngine;
 public class CarSO : ScriptableObject
 {
     public float moveSpeed;
-    public float size;
-    public Color color;
 }

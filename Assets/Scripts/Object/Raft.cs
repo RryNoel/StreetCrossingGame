@@ -11,6 +11,6 @@ public class Raft : MonoBehaviour
         float x = moveSpeed * Time.deltaTime;
         transform.Translate(x, 0f, 0f);
 
-        if (transform.localPosition.x > 12f) Destroy(this.gameObject);
+        if (transform.localPosition.x > 12f || transform.localPosition.x < -12f) gameObject.SetActive(false);
     }
 }

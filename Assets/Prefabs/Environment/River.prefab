@@ -77,10 +77,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87bac00d683ed445b60aa4e63ced8cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectTag: Raft
-  cloneTarget: {fileID: 7629281076240890215, guid: 690dbd11e6f82f14a862718ae66c0103, type: 3}
+  carTags:
+  - Raft
+  - Raft2
+  - Raft3
   generationPos: {fileID: 2667100960511123273}
-  generationPersent: 50
+  generationPersent: 75
   cloneDelaySec: 3
 --- !u!1 &8301240041928587591
 GameObject:

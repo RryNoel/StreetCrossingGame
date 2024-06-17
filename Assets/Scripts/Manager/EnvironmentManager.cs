@@ -70,7 +70,7 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
 
     public int GroupRandomWaterLine(int posZ)
     {
-        int randomCount = Random.Range(1, 4);
+        int randomCount = Random.Range(1, 3);
         for (int i = 0; i < randomCount; ++i)
         {
             GeneratorWaterLine(posZ + i);
@@ -81,7 +81,7 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
 
     public int GroupRandomGrassLine(int posZ)
     {
-        int randomCount = Random.Range(1, 3);
+        int randomCount = Random.Range(1, 4);
         for (int i = 0; i < randomCount; ++i)
         {
             GeneratorGrassLine(posZ + i);

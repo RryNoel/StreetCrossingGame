@@ -99,11 +99,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87bac00d683ed445b60aa4e63ced8cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectTag: Car
-  cloneTarget: {fileID: 775787864640794108, guid: e556b1fd85efa8343afc543957605d60, type: 3}
+  carTags:
+  - Taxi
+  - Police
+  - Van
+  - Suv
   generationPos: {fileID: 1286129548872060435}
   generationPersent: 50
-  cloneDelaySec: 1
+  cloneDelaySec: 4
 --- !u!1 &4436760329338740016
 GameObject:
   m_ObjectHideFlags: 0

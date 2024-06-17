@@ -61,8 +61,6 @@ public class Spawn : MonoBehaviour
         GameObject tempClone;
         Vector3 offSetPos = Vector3.zero;
 
-        float posZ = transform.position.z;
-
         for (int i = StartMinVal; i < StartMaxVal; i++)
         {
             randomval = Random.Range(0, 100);
