@@ -15,6 +15,11 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(1);
     }
 
+    public void GameOver()
+    {
+        // 판넬추가
+    }
+
     public void QuitGame()
     {
         #if UNITY_EDITOR
