@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public CarSO car;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        float x = car.moveSpeed * Time.deltaTime;
+        transform.Translate(x, 0f, 0f);
     }
 }
