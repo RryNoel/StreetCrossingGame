@@ -10,8 +10,8 @@ public class GameManager : Singleton<GameManager>
     public event Action EndGame;
 
     [Header("일시정지")]
-    private bool isPaused;
     public GameObject pausePanel;
+    private bool isPaused;
 
     protected override void Awake()
     {
@@ -63,14 +63,13 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = isPaused ? 0f : 1f;
     }
 
-    public void PlayGame()
-    {
-
-    }
-
     public void GameOver()
     {
         // 게임오버 판넬 추가
+    }
+    public void PlayGame()
+    {
+
     }
 
     public void QuitGame()
