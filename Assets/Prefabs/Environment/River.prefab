@@ -80,7 +80,7 @@ MonoBehaviour:
   cloneTarget: {fileID: 7629281076240890215, guid: 690dbd11e6f82f14a862718ae66c0103, type: 3}
   generationPos: {fileID: 2667100960511123273}
   generationPersent: 50
-  cloneDelaySec: 1
+  cloneDelaySec: 3
 --- !u!1 &8301240041928587591
 GameObject:
   m_ObjectHideFlags: 0

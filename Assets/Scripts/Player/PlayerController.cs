@@ -34,6 +34,11 @@ public class PlayerController : MonoBehaviour
         targetPosition = transform.position;
     }
 
+    private void Start()
+    {
+        EnvironmentManager.Instance.UpdateForwardMap((int)transform.position.z);
+    }
+
     private void Update()
     {
         InputUpdate();
@@ -50,16 +55,16 @@ public class PlayerController : MonoBehaviour
         switch (moveType)
         {
             case DirectionType.Forward:
-                direction = transform.forward;
+                direction = Vector3.up;
                 break;
             case DirectionType.Back:
-                direction = -transform.forward;
+                direction = Vector3.back;
                 break;
             case DirectionType.Left:
-                direction = -transform.right;
+                direction = Vector3.left;
                 break;
             case DirectionType.Right:
-                direction = transform.right;
+                direction = Vector3.right;
                 break;
         }
 
@@ -144,6 +149,8 @@ public class PlayerController : MonoBehaviour
 
         Vector3 raftMovement = raftObj.transform.position - previousRaftPosition;
         previousRaftPosition = raftObj.transform.position;
+
+        EnvironmentManager.Instance.UpdateForwardMap((int)transform.position.z);
 
         if (!isInputActive)
         {
