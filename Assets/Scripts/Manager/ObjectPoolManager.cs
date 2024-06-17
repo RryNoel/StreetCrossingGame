@@ -7,7 +7,7 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
 
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
     }
