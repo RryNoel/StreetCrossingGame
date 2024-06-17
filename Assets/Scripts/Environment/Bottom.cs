@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Bottom : MonoBehaviour
 {
+    public string objectTag;
+
     public GameObject cloneTarget;
     public Transform generationPos;
     public int generationPersent = 50;
@@ -34,8 +37,11 @@ public class Bottom : MonoBehaviour
         Vector3 offSetPos = clonePos.position;
         offSetPos.y = 0f;
 
-        GameObject cloneObj = Instantiate(cloneTarget.gameObject, offSetPos, generationPos.rotation, transform);
+        GameObject cloneObj = ObjectPoolManager.Instance.SpawnFromPool(objectTag, offSetPos, generationPos.rotation);
 
-        cloneObj.SetActive(true);
+        if (cloneObj != null)
+        {
+            cloneObj.SetActive(true);
+        }
     }
 }
