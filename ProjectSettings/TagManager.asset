@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Car
   - Raft
+  - Environment
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - UI
   - Car
   - Raft
-  - 
+  - Environment
   - 
   - 
   - 

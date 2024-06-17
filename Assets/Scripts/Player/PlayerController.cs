@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public float tileSize = 1.0f;
     protected DirectionType type = DirectionType.Forward;
     private Vector3 targetPosition;
+    public LayerMask layerMask;
     private bool isMoving = false;
     private bool isInputActive = false;
 
@@ -42,9 +43,40 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private bool IsCheckObject(DirectionType moveType)
+    {
+        Vector3 direction = Vector3.zero;
+
+        switch (moveType)
+        {
+            case DirectionType.Forward:
+                direction = transform.forward;
+                break;
+            case DirectionType.Back:
+                direction = -transform.forward;
+                break;
+            case DirectionType.Left:
+                direction = -transform.right;
+                break;
+            case DirectionType.Right:
+                direction = transform.right;
+                break;
+        }
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, direction, out hit, tileSize, layerMask))
+        {
+           return false;
+        }
+
+        return true;
+    }
+
     private void Move(DirectionType moveType)
     {
         if (isMoving) return;
+        if (!IsCheckObject(moveType)) return;
 
         switch (moveType)
         {
