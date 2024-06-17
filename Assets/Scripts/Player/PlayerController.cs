@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.Windows;
 
 public enum DirectionType
@@ -20,6 +21,12 @@ public class PlayerController : MonoBehaviour
     protected DirectionType type = DirectionType.Forward;
     private Vector3 targetPosition;
     private bool isMoving = false;
+    private bool isInputActive = false;
+
+    private Raft raftObj;
+    private Vector3 raftOffSetPos = Vector3.zero;
+    private Vector3 previousRaftPosition;
+    private bool isOnRaft = false;
 
     private void Awake()
     {
@@ -28,16 +35,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (isMoving)
+        InputUpdate();
+        if (isOnRaft)
         {
-            float step = moveSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
-
-            if (Vector3.Distance(transform.position, targetPosition) < 0.001f)
-            {
-                transform.position = targetPosition;
-                isMoving = false;
-            }
+            UpdateRaftMovement();
         }
     }
 
@@ -73,6 +74,8 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Performed)
         {
             Vector2 input = context.ReadValue<Vector2>();
+            isInputActive = true;
+
             if (input.y > 0)
                 Move(DirectionType.Forward);
             else if (input.y < 0)
@@ -82,14 +85,86 @@ public class PlayerController : MonoBehaviour
             else if (input.x > 0)
                 Move(DirectionType.Right);
         }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            isInputActive = false;
+        }
+    }
+
+    private void InputUpdate()
+    {
+        if (isMoving)
+        {
+            float step = moveSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
+
+            if (Vector3.Distance(transform.position, targetPosition) < 0.001f)
+            {
+                transform.position = targetPosition;
+                isMoving = false;
+            }
+        }
+    }
+
+    private void UpdateRaftMovement()
+    {
+        if(raftObj == null) return;
+
+        Vector3 raftMovement = raftObj.transform.position - previousRaftPosition;
+        previousRaftPosition = raftObj.transform.position;
+
+        if (!isInputActive)
+        {
+            transform.position += raftMovement;
+            targetPosition += raftMovement;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Raft raft = other.GetComponent<Raft>();
+
+        if (other.gameObject.CompareTag("Raft") && raft != null)
+        {
+            raftObj = raft;
+            previousRaftPosition = raft.transform.position;
+            raftOffSetPos = transform.position - raft.transform.position;
+            isOnRaft = true;
+        }
+
         if (other.CompareTag("Car"))
         {
             // 애니메이션 재생후 게임매니저의 게임 종료 로직
             Debug.Log("사망");
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (raftObj != null && raftObj.transform == other.transform)
+        {
+            StartCoroutine(SmoothExitRaft());
+        }
+    }
+
+    private IEnumerator SmoothExitRaft()
+    {
+        Vector3 startPosition = transform.position;
+        Vector3 endPosition = raftObj.transform.position + (transform.position - raftObj.transform.position);
+        float duration = 0.5f; // 이동 시간
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            transform.position = Vector3.Lerp(startPosition, endPosition, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = endPosition;
+        targetPosition = transform.position;
+
+        raftObj = null;
+        isOnRaft = false;
     }
 }
