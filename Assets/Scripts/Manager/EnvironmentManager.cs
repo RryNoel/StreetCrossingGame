@@ -42,7 +42,7 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
     public int minPosZ = -20;
     public int maxPosZ = 20;
 
-    public int frontOffSetPosZ = 10;
+    public int frontOffSetPosZ = 20;
     public int backOffSetPosZ = 10;
 
     protected override void Awake()
