@@ -15,9 +15,14 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(1);
     }
 
+    public void PasueGame()
+    {
+        // 일시정지 판넬 추가
+    }
+
     public void GameOver()
     {
-        // 판넬추가
+        // 게임오버 판넬 추가
     }
 
     public void QuitGame()

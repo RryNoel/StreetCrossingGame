@@ -121,6 +121,9 @@ public class PlayerController : MonoBehaviour
                 Move(DirectionType.Left);
             else if (input.x > 0)
                 Move(DirectionType.Right);
+
+            CharacterManager.Instance.Player.anim.SetWalkAnim();
+            CharacterManager.Instance.Player.anim.InvokeOutAnim();
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
