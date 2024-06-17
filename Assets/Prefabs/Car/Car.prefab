@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4110521209157435195}
   - component: {fileID: 5355323424385444924}
   - component: {fileID: 4194583076621924111}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Car
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,7 +49,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 3468486290826720655}
   - component: {fileID: 5202478469052123809}
   - component: {fileID: 3436677081755462252}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wheel-front-left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 5526275066012899284}
   - component: {fileID: 6413687104732872266}
   - component: {fileID: 883792432006764643}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wheel-front-right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 579330984177599157}
   - component: {fileID: 1824522717333706588}
   - component: {fileID: 8795038430870910980}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wheel-back-left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1364775365677267176}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TaxiMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 75239518699224524}
   - component: {fileID: 4414106735644123798}
   - component: {fileID: 3532386666654353412}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wheel-back-right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 5145714779829240489}
   - component: {fileID: 3195551997631683246}
   - component: {fileID: 9063176621586361413}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

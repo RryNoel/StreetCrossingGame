@@ -83,4 +83,13 @@ public class PlayerController : MonoBehaviour
                 Move(DirectionType.Right);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Car"))
+        {
+            // 애니메이션 재생후 게임매니저의 게임 종료 로직
+            Debug.Log("사망");
+        }
+    }
 }
