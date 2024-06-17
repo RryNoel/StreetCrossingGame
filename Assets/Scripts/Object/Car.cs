@@ -10,5 +10,7 @@ public class Car : MonoBehaviour
     {
         float x = car.moveSpeed * Time.deltaTime;
         transform.Translate(x, 0f, 0f);
+
+        if (transform.localPosition.x > 12f) Destroy(this.gameObject);
     }
 }
