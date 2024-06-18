@@ -72,6 +72,7 @@
 이거는 플레이어의 목표 X값을 갱신해주어 해결
 
 ![Bug2](https://github.com/RryNoel/StreetCrossingGame/assets/97824309/9f551a14-2b8e-4569-81a2-82544a25a7ba)
+![image](https://github.com/RryNoel/StreetCrossingGame/assets/97824309/a068f34a-ab47-4707-8c8b-7a869f5c2264)
 
 땟목을 타고 내리면 이동때문인지 몰라도 플레이어의 X값과 Z값이 틀어지는 현상이 발생함   
 이로 인해서 충돌이 되면 안되는 오브젝트에 플레이어가 끼이는 현상이 발생 (현재진행형)
