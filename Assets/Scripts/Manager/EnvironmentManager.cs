@@ -36,7 +36,7 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
     private int lastLinePos = 0;
 
     private int minLine = 0;
-    public int deleteLine = 10;
+    public int deleteLine = 5;
     public int backOffSetLineCount = 30;
 
     public int minPosZ = -20;
@@ -57,10 +57,28 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
         grassRoad.gameObject.SetActive(false);
     }
 
+    public void ResetEnvironment()
+    {
+        // 모든 라인 제거
+        foreach (var line in lineMapList)
+        {
+            Destroy(line.gameObject);
+        }
+
+        lineMapList.Clear();
+        lineMapDic.Clear();
+        lastLinePos = 0;
+        lastRoadType = LastRoadType.Max;
+        minLine = 0;
+
+        // 초기 환경 생성 (예: 기본 라인 설정)
+        UpdateForwardMap(0);
+    }
+
     public int GroupRandomRoadLine(int posZ)
     {
         int randomCount = Random.Range(1, 4);
-        for (int i = 0; i < randomCount; ++i)
+        for (int i = 0; i < randomCount; i++)
         {
             GeneratorRoadLine(posZ + i);
         }
@@ -71,7 +89,7 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
     public int GroupRandomWaterLine(int posZ)
     {
         int randomCount = Random.Range(1, 3);
-        for (int i = 0; i < randomCount; ++i)
+        for (int i = 0; i < randomCount; i++)
         {
             GeneratorWaterLine(posZ + i);
         }
@@ -82,7 +100,7 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
     public int GroupRandomGrassLine(int posZ)
     {
         int randomCount = Random.Range(1, 4);
-        for (int i = 0; i < randomCount; ++i)
+        for (int i = 0; i < randomCount; i++)
         {
             GeneratorGrassLine(posZ + i);
         }
@@ -160,7 +178,7 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
             minLine = minPosZ;
             int i = 0;
 
-            for (i = minPosZ; i < maxPosZ; ++i)
+            for (i = minPosZ; i < maxPosZ; i++)
             {
                 int offSetVal = 0;
                 if(i < 0)

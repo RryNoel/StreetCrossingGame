@@ -100,6 +100,7 @@ public class GameManager : Singleton<GameManager>
         playBtn.gameObject.SetActive(false);
         isPaused = false;
         Time.timeScale = 1f;
+        EnvironmentManager.Instance.ResetEnvironment();
     }
 
     public void AddScore(int value)
