@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
     private bool isPaused;
+    private int score = 0;
 
     public bool IsPaused
     {
@@ -24,12 +27,27 @@ public class GameManager : Singleton<GameManager>
 
     [Header("게임 끝!")]
     public GameObject endPanel;
+    public TextMeshProUGUI endScoreTxt;
+    public TextMeshProUGUI moveScoreTxt;
+
+    [Header("점수관련")]
+    public TextMeshProUGUI itemScoreTxt;
+    public TextMeshProUGUI posZScoreTxt;
 
     protected override void Awake()
     {
         base.Awake();
         EndGame += GameOver;
         OnPause += PauseGame;
+    }
+
+    private void Update()
+    {
+        itemScoreTxt.text = score.ToString();
+        posZScoreTxt.text = CharacterManager.Instance.Player.controller.posZScore.ToString();
+
+        moveScoreTxt.text = posZScoreTxt.text;
+        endScoreTxt.text = itemScoreTxt.text;
     }
 
     public void OnGameOverEvent()
@@ -82,6 +100,11 @@ public class GameManager : Singleton<GameManager>
         playBtn.gameObject.SetActive(false);
         isPaused = false;
         Time.timeScale = 1f;
+    }
+
+    public void AddScore(int value)
+    {
+        score += value;
     }
 
     public void QuitGame()

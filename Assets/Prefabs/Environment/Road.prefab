@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 6130370305770195352}
   - component: {fileID: 4962374168460357406}
   - component: {fileID: 9214368724927938596}
+  - component: {fileID: 8053453657280925988}
   m_Layer: 0
   m_Name: Road
   m_TagString: Untagged
@@ -107,6 +108,23 @@ MonoBehaviour:
   generationPos: {fileID: 1286129548872060435}
   generationPersent: 50
   cloneDelaySec: 4
+--- !u!114 &8053453657280925988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710877355672819083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2410af2769f32842a7074fbb16a4b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnvironmentObjectList:
+  - {fileID: 3566005617142639975, guid: fffc6b8b2c03d7d4cb40a60fec14a4e3, type: 3}
+  StartMinVal: -12
+  StartMaxVal: 12
+  SpawnCreateRandom: 20
 --- !u!1 &4436760329338740016
 GameObject:
   m_ObjectHideFlags: 0

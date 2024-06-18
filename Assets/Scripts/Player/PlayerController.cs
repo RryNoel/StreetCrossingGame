@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask layerMask;
     private bool isMoving = false;
     private bool isInputActive = false;
+    public int posZScore = 0;
 
     private Raft raftObj;
     private Vector3 raftOffSetPos = Vector3.zero;
@@ -40,11 +41,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         EnvironmentManager.Instance.UpdateForwardMap((int)transform.position.z);
-
-        if (transform.position.y < -5)
-        {
-            GameManager.Instance.OnGameOverEvent();
-        }
     }
 
     private void Update()
@@ -53,6 +49,13 @@ public class PlayerController : MonoBehaviour
         if (isOnRaft)
         {
             UpdateRaftMovement();
+        }
+
+        posZScore = (int)transform.position.z;
+
+        if (transform.position.y < -5)
+        {
+            GameManager.Instance.OnGameOverEvent();
         }
     }
 
