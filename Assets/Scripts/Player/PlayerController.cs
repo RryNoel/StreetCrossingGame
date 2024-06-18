@@ -40,6 +40,11 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         EnvironmentManager.Instance.UpdateForwardMap((int)transform.position.z);
+
+        if (transform.position.y < -5)
+        {
+            GameManager.Instance.OnGameOverEvent();
+        }
     }
 
     private void Update()
@@ -179,8 +184,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Car"))
         {
-            // 애니메이션 재생후 게임매니저의 게임 종료 로직
-            Debug.Log("사망");
+            GameManager.Instance.OnGameOverEvent();
         }
     }
 

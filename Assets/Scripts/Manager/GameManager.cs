@@ -22,6 +22,9 @@ public class GameManager : Singleton<GameManager>
     public Button pauseBtn;
     public Button playBtn;
 
+    [Header("게임 끝!")]
+    public GameObject endPanel;
+
     protected override void Awake()
     {
         base.Awake();
@@ -42,13 +45,13 @@ public class GameManager : Singleton<GameManager>
     public void StartGame()
     {
         SceneManager.LoadScene(1);
-        Time.timeScale = 1f;
+        ResetGameState();
     }
 
     public void ReturnGame()
     {
         SceneManager.LoadScene(0);
-        Time.timeScale = 1f;
+        ResetGameState();
     }
 
     private void PauseGame(bool pause)
@@ -67,11 +70,18 @@ public class GameManager : Singleton<GameManager>
 
     public void GameOver()
     {
-        // 게임오버 판넬 추가
+        endPanel.SetActive(true);
+        Time.timeScale = 0f;
     }
-    public void PlayGame()
-    {
 
+    private void ResetGameState()
+    {
+        endPanel.SetActive(false);
+        pausePanel.SetActive(false);
+        pauseBtn.gameObject.SetActive(true);
+        playBtn.gameObject.SetActive(false);
+        isPaused = false;
+        Time.timeScale = 1f;
     }
 
     public void QuitGame()
