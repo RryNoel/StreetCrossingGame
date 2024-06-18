@@ -55,11 +55,12 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
         defaultRoad.gameObject.SetActive(false);
         waterRoad.gameObject.SetActive(false);
         grassRoad.gameObject.SetActive(false);
+
+        ResetEnvironment();
     }
 
     public void ResetEnvironment()
     {
-        // 모든 라인 제거
         foreach (var line in lineMapList)
         {
             Destroy(line.gameObject);
@@ -71,7 +72,6 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
         lastRoadType = LastRoadType.Max;
         minLine = 0;
 
-        // 초기 환경 생성 (예: 기본 라인 설정)
         UpdateForwardMap(0);
     }
 
