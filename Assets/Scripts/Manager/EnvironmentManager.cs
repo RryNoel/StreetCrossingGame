@@ -55,8 +55,6 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
         defaultRoad.gameObject.SetActive(false);
         waterRoad.gameObject.SetActive(false);
         grassRoad.gameObject.SetActive(false);
-
-        ResetEnvironment();
     }
 
     public void ResetEnvironment()
@@ -72,7 +70,7 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
         lastRoadType = LastRoadType.Max;
         minLine = 0;
 
-        UpdateForwardMap(0);
+        UpdateForwardMap(-1);
     }
 
     public int GroupRandomRoadLine(int posZ)
