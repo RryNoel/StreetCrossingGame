@@ -3,25 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
+    private bool isPaused;
+
+    public bool IsPaused
+    {
+        get { return isPaused; }
+    }
+
     public event Action<bool> OnPause;
     public event Action EndGame;
 
     [Header("일시정지")]
     public GameObject pausePanel;
-    private bool isPaused;
+    public Button pauseBtn;
+    public Button playBtn;
 
     protected override void Awake()
     {
         base.Awake();
-    }
-
-    private void Start()
-    {
         EndGame += GameOver;
-        OnPause += PasueGame;
+        OnPause += PauseGame;
     }
 
     public void OnGameOverEvent()
@@ -46,18 +51,15 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1f;
     }
 
-    public bool IsPaused
-    {
-        get { return isPaused; }
-    }
-
-    private void PasueGame(bool pause)
+    private void PauseGame(bool pause)
     {
         isPaused = pause;
 
         if (pausePanel != null)
         {
             pausePanel.SetActive(isPaused);
+            pauseBtn.gameObject.SetActive(!isPaused);
+            playBtn.gameObject.SetActive(isPaused);
         }
 
         Time.timeScale = isPaused ? 0f : 1f;

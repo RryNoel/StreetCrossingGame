@@ -29,9 +29,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 previousRaftPosition;
     private bool isOnRaft = false;
 
+    private PlayerInputActions playerInputActions;
+
     private void Awake()
     {
         targetPosition = transform.position;
+        playerInputActions = new PlayerInputActions();
     }
 
     private void Start()
@@ -208,5 +211,25 @@ public class PlayerController : MonoBehaviour
 
         raftObj = null;
         isOnRaft = false;
+    }
+
+    private void OnEnable()
+    {
+        playerInputActions.Player.Enable();
+        playerInputActions.Player.Pause.performed += OnPause;
+    }
+
+    private void OnDisable()
+    {
+        playerInputActions.Player.Disable();
+        playerInputActions.Player.Pause.performed -= OnPause;
+    }
+
+    private void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            GameManager.Instance.OnPauseEvent(!GameManager.Instance.IsPaused);
+        }
     }
 }
